@@ -1,0 +1,35 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+  {
+    date: "Enero 2023 - Actualidad",
+    title: "Diseñador UX/UI - Empresa XYZ",
+    description:
+      "Diseñador UX/UI en una agencia de marketing digital, donde lideré el diseño de una plataforma de gestión de proyectos, mejorando la experiencia del usuario y optimizando los flujos de trabajo.",
+    link: "https://www.figma.com/community/file/1111111111111",
+  },
+  {
+    date: "Enero 2021 - Diciembre 2022",
+    title: "Diseñador Gráfico - Empresa ABC",
+    description:
+      "Diseñador gráfico en una agencia de publicidad, donde desarrollé campañas visuales para clientes de diversas industrias, incluyendo branding, diseño de logotipos y material promocional.",
+  },
+  {
+    date: "Enero 2019 - Diciembre 2020",
+    title: "Prácticas de Diseño Gráfico - Cochera 23",
+    description:
+      "Prácticas en una agencia de diseño, donde adquirí experiencia en diseño gráfico y aprendí a trabajar en equipo en proyectos creativos.",
+  },
+];
+---
+
+<ol class="relative border-s border-gray-200 ml-3">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="mb-10 ms-4">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

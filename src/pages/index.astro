@@ -1,20 +1,23 @@
 ---
 import Badge from "../components/Badge.astro";
+import Experience from "../components/Experience.astro";
 import ContactIcon from "../components/icons/ContactIcon.astro";
 import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
+import SuitcaseIcon from "../components/icons/SuitcaseIcon.astro";
+import SectionContainer from "../components/SectionContainer.astro";
 import SocialPill from "../components/SocialPill.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Manuel García Portfolio - Diseñador Gráfico y UX/UI">
   <main>
-    <section class="w-full lg:w-[740px] mx-auto py-44">
+    <SectionContainer class="py-36 pb-24">
       <img
         class="rounded-full size-24 mb-4"
         src="https://mir-s3-cdn-cf.behance.net/user/230/db2609476534187.63e1335962ed5.jpg"
         alt="Manuel photo"
       />
-      <h1 class="text-5xl font-bold flex flex-row gap-x-4 pb-10 opacity-80">
+      <h1 class="text-5xl font-bold flex flex-row gap-x-4 pb-10 text-gray-800">
         Hola, soy Manuel <a
           href="https://www.linkedin.com"
           target="_blank"
@@ -24,14 +27,14 @@ import Layout from "../layouts/Layout.astro";
           <Badge>Disponible para trabajar</Badge>
         </a>
       </h1>
-      <h2 class="text-2xl text-wrap">
+      <h2 class="text-2xl text-pretty">
         <span class="text-pink-400 opacity-80">Diseñador Gráfico</span><span
-          class="opacity-80"
+          class="text-gray-800"
         >
           con más de 3 años de experiencia, especializado en
         </span>
         <span class="text-pink-400 opacity-80">UX/UI</span>.
-        <span class="opacity-80"
+        <span class="text-gray-800"
           >Desde Valencia, me enfoco en crear experiencias visuales únicas,
           funcionales y centradas en las personas.</span
         >
@@ -40,14 +43,24 @@ import Layout from "../layouts/Layout.astro";
         <!-- todo: add href and correct email -->
         <SocialPill href="https://www.linkedin.com">
           <ContactIcon />
-          <span class="opacity-80">mardekoro@gmail.com</span>
+          <span class="text-gray-600">mardekoro@gmail.com</span>
         </SocialPill>
         <!-- todo: add href -->
         <SocialPill href="https://www.linkedin.com">
           <LinkedInIcon />
-          <span class="opacity-80">LinkedIn</span>
+          <span class="text-gray-600">LinkedIn</span>
         </SocialPill>
       </nav>
-    </section>
+    </SectionContainer>
+
+    <SectionContainer id="experiencia">
+      <h2
+        class="text-2xl font-semibold mb-6 flex gap-x-3 items-center text-gray-800"
+      >
+        <SuitcaseIcon />
+        Experiencia laboral
+      </h2>
+      <Experience />
+    </SectionContainer>
   </main>
 </Layout>
