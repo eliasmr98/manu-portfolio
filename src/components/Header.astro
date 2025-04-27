@@ -1,11 +1,58 @@
-<header
-  class="flex justify-center item-center py-4 w-full xl:w-[1120px] mx-auto"
->
-  <span></span>
-  <nav class="flex flex-row gap-x-10 text-gray-800">
-    <a href="#top">Inicio</a>
-    <a href="#experiencia">Experiencia</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#sobre-mi">Sobre mí</a>
+---
+const navItems = [
+  { title: "Inicio", label: "top", url: "#top" },
+  { title: "Experiencia", label: "experiencia", url: "#experiencia" },
+  { title: "Proyectos", label: "proyectos", url: "#proyectos" },
+  { title: "Sobre mí", label: "sobre-mi", url: "#sobre-mi" },
+];
+---
+
+<header class="fixed top-0 inset-x-0 z-10 flex justify-center py-4 px-2">
+  <nav
+    id="site-nav"
+    class="flex items-center space-x-4 px-4 py-2 rounded-full
+           text-sm font-medium text-gray-800
+           bg-transparent transition-all duration-300"
+  >
+    {
+      navItems.map((link) => (
+        <a
+          class="px-2 py-1 hover:text-blue-500 dark:hover:text-blue-500 transition"
+          aria-label={link.label}
+          href={link.url}
+        >
+          {link.title}
+        </a>
+      ))
+    }
   </nav>
 </header>
+
+<script>
+  (function () {
+    const nav = document.getElementById("site-nav")!;
+    function updateNavBg() {
+      if (window.scrollY > 20) {
+        nav.classList.add(
+          "bg-white/50",
+          "dark:bg-gray-800/50",
+          "backdrop-blur-md",
+          "shadow-lg",
+          "ring-1",
+          "ring-white/10"
+        );
+      } else {
+        nav.classList.remove(
+          "bg-white/50",
+          "dark:bg-gray-800/50",
+          "backdrop-blur-md",
+          "shadow-lg",
+          "ring-1",
+          "ring-white/10"
+        );
+      }
+    }
+    window.addEventListener("scroll", updateNavBg);
+    updateNavBg();
+  })();
+</script>
