@@ -12,12 +12,12 @@ const navItems = [
     id="site-nav"
     class="flex items-center space-x-4 px-4 py-2 rounded-full
            text-sm font-medium text-gray-800
-           bg-transparent transition-all duration-300"
+           bg-transparent backdrop-blur-md transition-all duration-300"
   >
     {
       navItems.map((link) => (
         <a
-          class="px-2 py-1 hover:text-pink-500 transition"
+          class="px-2 py-1 hover:text-pink-400 transition"
           aria-label={link.label}
           href={link.url}
         >
@@ -35,18 +35,16 @@ const navItems = [
       if (window.scrollY > 20) {
         nav.classList.add(
           "bg-white/50",
-          "backdrop-blur-md",
           "shadow-lg",
           "ring-1",
-          "ring-white/10"
+          "ring-white/10",
         );
       } else {
         nav.classList.remove(
           "bg-white/50",
-          "backdrop-blur-md",
           "shadow-lg",
           "ring-1",
-          "ring-white/10"
+          "ring-white/10",
         );
       }
     }
