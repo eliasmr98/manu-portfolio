@@ -1,11 +1,13 @@
 ---
 import Badge from "../components/Badge.astro";
 import Experience from "../components/Experience.astro";
+import AboutMe from "../components/AboutMe.astro";
 import BehanceIcon from "../components/icons/BehanceIcon.astro";
 import ContactIcon from "../components/icons/ContactIcon.astro";
 import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
 import ProjectsIcon from "../components/icons/ProjectsIcon.astro";
 import SuitcaseIcon from "../components/icons/SuitcaseIcon.astro";
+import UserIcon from "../components/icons/UserIcon.astro";
 import Projects from "../components/Projects.astro";
 import SectionContainer from "../components/SectionContainer.astro";
 import SocialPill from "../components/SocialPill.astro";
@@ -73,6 +75,16 @@ import Layout from "../layouts/Layout.astro";
         Proyectos
       </h2>
       <Projects />
+    </SectionContainer>
+
+    <SectionContainer id="sobre-mi">
+      <h2
+        class="text-xl lg:text-2xl font-semibold mb-6 flex gap-x-3 items-center text-gray-800"
+      >
+        <UserIcon class="size-6 md:size-8" />
+        Sobre mí
+      </h2>
+      <AboutMe />
     </SectionContainer>
   </main>
 </Layout>
