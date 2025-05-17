@@ -1,0 +1,57 @@
+---
+import CheckIcon from "./icons/CheckIcon.astro";
+import CancelIcon from "./icons/CancelIcon.astro";
+---
+
+<div
+  id="toast-container"
+  class="fixed top-5 right-5 z-50 flex flex-col space-y-2 items-end"
+>
+</div>
+
+<template id="toast-template-success">
+  <div
+    class="flex items-center gap-2 px-4 py-3 rounded bg-green-500 text-white shadow-lg"
+  >
+    <CheckIcon class="size-4 md:size-5" />
+    <span class="toast-message"></span>
+  </div>
+</template>
+
+<template id="toast-template-error">
+  <div
+    class="flex items-center gap-2 px-4 py-3 rounded bg-red-500 text-white shadow-lg"
+  >
+    <CancelIcon class="size-4 md:size-5" />
+    <span class="toast-message"></span>
+  </div>
+</template>
+
+<script type="module">
+  /**
+   * showToast
+   * @param {{ message: string, type?: string, duration?: number }} options
+   */
+  window.showToast = function ({
+    message = "",
+    type = "success",
+    duration = 3000,
+  } = {}) {
+    const container = document.getElementById("toast-container");
+    const templateEl = document.getElementById(`toast-template-${type}`);
+    if (
+      !(container instanceof HTMLElement) ||
+      !(templateEl instanceof HTMLTemplateElement)
+    )
+      return;
+    const fragment = templateEl.content.cloneNode(true);
+    const span = fragment.querySelector(".toast-message");
+    if (span instanceof HTMLElement) span.textContent = message;
+    container.appendChild(fragment);
+    const toastEl = container.lastElementChild;
+    if (!(toastEl instanceof HTMLElement)) return;
+    setTimeout(() => {
+      toastEl.remove();
+    }, duration);
+  };
+</script>
