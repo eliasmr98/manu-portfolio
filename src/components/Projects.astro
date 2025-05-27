@@ -5,6 +5,7 @@ import InDesignIcon from "./icons/InDesignIcon.astro";
 import FigmaIcon from "./icons/FigmaIcon.astro";
 import SocialPill from "./SocialPill.astro";
 import BehanceIcon from "./icons/BehanceIcon.astro";
+import CorelDrawIcon from "./icons/CorelDrawIcon.astro";
 
 const TAGS = {
   PHOTOSHOP: {
@@ -27,6 +28,11 @@ const TAGS = {
     class: "bg-green-100 text-green-800 border border-green-300",
     icon: FigmaIcon,
   },
+  CORELDRAW: {
+    name: "CorelDRAW",
+    class: "bg-purple-100 text-purple-800 border border-purple-300",
+    icon: CorelDrawIcon,
+  },
 };
 
 const PROJECTS = [
@@ -44,7 +50,7 @@ const PROJECTS = [
       "Rebranding de una empresa de pintura, donde se realizó un cambio de imagen y se crearon diferentes aplicaciones gráficas",
     url: "https://www.behance.net/gallery/198691959/branding-Sepermanente",
     image: "/projects/sepermanente.png",
-    tags: [TAGS.INDESIGN, TAGS.FIGMA],
+    tags: [TAGS.INDESIGN, TAGS.FIGMA, TAGS.CORELDRAW],
   },
 ];
 ---
@@ -54,11 +60,7 @@ const PROJECTS = [
     PROJECTS.map(({ image, title, description, tags, url }) => (
       <article class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="aspect-video overflow-hidden rounded-xl shadow-xl border border-gray-400">
-          <img
-            alt={title}
-            src={image}
-            class="object-cover w-full h-full"
-          />
+          <img alt={title} src={image} class="object-cover w-full h-full" />
         </div>
 
         <div class="space-y-4">
@@ -68,7 +70,7 @@ const PROJECTS = [
               {tags.map((tag) => (
                 <li>
                   <span
-                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                    class={`flex gap-x-1 rounded-full text-xs ${tag.class} py-1 px-2 `}
                   >
                     <tag.icon class="size-4" />
                     {tag.name}
