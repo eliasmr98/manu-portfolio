@@ -4,9 +4,11 @@ interface Props {
   company: string;
   date: string;
   description: string;
+  city: string;
+  logo?: string;
   link?: string;
 }
-const { title, date, description, link, company } = Astro.props;
+const { title, date, description, city, link, company, logo } = Astro.props;
 ---
 
 <div
@@ -14,9 +16,23 @@ const { title, date, description, link, company } = Astro.props;
 >
 </div>
 <time class="mb-1 text-sm font-normal leading-none text-gray-500">{date}</time>
-<h3 class="text-lg font-medium text-pink-400 mt-3">
-  {title} - <span class="text-gray-800/100 font-normal">{company}</span>
-</h3>
+<div class="my-3 flex items-center space-x-3">
+  {
+    logo && (
+      <img
+        src={logo}
+        alt={`${company} logo`}
+        class="w-10 h-10 object-cover rounded-full"
+      />
+    )
+  }
+  <div>
+    <h3 class="text-lg font-medium text-pink-400">{title}</h3>
+    <p class="text-sm font-normal text-gray-800">
+      {company}{city && `, ${city}`}
+    </p>
+  </div>
+</div>
 
 <p class="mb-4 text-base font-normal text-pretty text-gray-700">
   {description}
