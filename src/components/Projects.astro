@@ -3,6 +3,8 @@ import PhotoshopIcon from "./icons/PhotoshopIcon.astro";
 import IllustratorIcon from "./icons/IllustratorIcon.astro";
 import InDesignIcon from "./icons/InDesignIcon.astro";
 import FigmaIcon from "./icons/FigmaIcon.astro";
+import SocialPill from "./SocialPill.astro";
+import BehanceIcon from "./icons/BehanceIcon.astro";
 
 const TAGS = {
   PHOTOSHOP: {
@@ -47,28 +49,43 @@ const PROJECTS = [
 ];
 ---
 
-{
-  PROJECTS.map(({ title, description, tags, image, url }) => (
-    <article>
-      <h3 class="text-2xl font-semibold text-pink-400  mb-2">{title}</h3>
-      <p class="text-lg mb-4 text-pretty">{description}</p>
-      <ul class="flex gap-x-2 flex-row mb-4">
-        {tags.map((tag) => (
-          <li>
-            <span
-              class={`flex gap-x-1 rounded-full text-xs ${tag.class} py-1 px-2`}
-            >
-              <tag.icon class="size-4 rounded" />
-              {tag.name}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        class="rounded shadow-2xl shadow-gray-500/20 mb-16 max-w-full h-auto"
-        src={image}
-        alt={`Captura de pantalla del proyecto ${title}`}
-      />
-    </article>
-  ))
-}
+<div class="space-y-16">
+  {
+    PROJECTS.map(({ image, title, description, tags, url }) => (
+      <article class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="aspect-video overflow-hidden rounded-xl shadow-xl border border-gray-400">
+          <img
+            alt={title}
+            src={image}
+            class="object-cover w-full h-full"
+          />
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-800">{title}</h3>
+          <div class="space-y-2">
+            <ul class="flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <li>
+                  <span
+                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                  >
+                    <tag.icon class="size-4" />
+                    {tag.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p class="text-gray-700">{description}</p>
+            <footer class="flex items-center gap-4">
+              <SocialPill href={url}>
+                <BehanceIcon class="size-4 md:size-5" />
+                <span class="text-gray-600">Ver en Behance</span>
+              </SocialPill>
+            </footer>
+          </div>
+        </div>
+      </article>
+    ))
+  }
+</div>
