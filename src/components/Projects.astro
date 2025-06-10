@@ -6,6 +6,7 @@ import FigmaIcon from "./icons/FigmaIcon.astro";
 import SocialPill from "./SocialPill.astro";
 import BehanceIcon from "./icons/BehanceIcon.astro";
 import CorelDrawIcon from "./icons/CorelDrawIcon.astro";
+import AdobeXdIcon from "./icons/AdobeXdIcon.astro";
 
 const TAGS = {
   PHOTOSHOP: {
@@ -33,6 +34,11 @@ const TAGS = {
     class: "bg-purple-100 text-purple-800 border border-purple-300",
     icon: CorelDrawIcon,
   },
+  ADOBEXD: {
+    name: "Adobe XD",
+    class: "bg-yellow-100 text-yellow-800 border border-yellow-300",
+    icon: AdobeXdIcon,
+  },
 };
 
 const PROJECTS = [
@@ -50,7 +56,7 @@ const PROJECTS = [
       "Branding de una empresa de pintura, donde se creó una nueva imagen y se desarrollaron distintas aplicaciones gráficas para su comunicación visual.",
     url: "https://www.behance.net/gallery/198691959/branding-Sepermanente",
     image: "/projects/sepermanente.png",
-    tags: [TAGS.PHOTOSHOP, TAGS.ILLUSTRATOR],
+    tags: [TAGS.PHOTOSHOP, TAGS.ILLUSTRATOR, TAGS.ADOBEXD],
   },
   {
     title: "Sinerlogis - Rebranding",
