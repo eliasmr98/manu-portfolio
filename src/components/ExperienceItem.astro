@@ -23,8 +23,8 @@ const {
 
 const modalId = `${company.toLowerCase().replace(/\s+/g, "-")}-${title.toLowerCase().replace(/\s+/g, "-")}-modal`;
 
-const openModal = `const el=document.getElementById('${modalId}'); el.classList.remove('hidden'); el.classList.add('flex');`;
-const closeModal = `const el=document.getElementById('${modalId}'); el.classList.remove('flex'); el.classList.add('hidden');`;
+const openModal = `const el=document.getElementById('${modalId}'); el.classList.remove('hidden'); el.classList.add('flex'); document.body.style.overflow='hidden';`;
+const closeModal = `const el=document.getElementById('${modalId}'); el.classList.remove('flex'); el.classList.add('hidden'); document.body.style.overflow='';`;
 ---
 
 <div
@@ -87,8 +87,9 @@ const closeModal = `const el=document.getElementById('${modalId}'); el.classList
         tabindex="-1"
         aria-hidden="true"
         class="hidden overflow-y-auto fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md transition-opacity duration-300"
+        onclick={closeModal}
       >
-        <div class="relative p-6 w-full max-w-4xl max-h-full">
+        <div class="relative p-6 w-full max-w-4xl max-h-full" onclick="event.stopPropagation()">
           <div class="relative bg-white rounded-lg shadow-lg ring-1 ring-gray-200 transform transition-all duration-300">
             <div class="flex items-center justify-between p-6 border-b rounded-t-lg border-gray-200">
               <h3 class="text-2xl font-bold">Más información - {company}</h3>
