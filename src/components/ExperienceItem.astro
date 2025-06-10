@@ -86,17 +86,15 @@ const closeModal = `const el=document.getElementById('${modalId}'); el.classList
         id={modalId}
         tabindex="-1"
         aria-hidden="true"
-        class="hidden overflow-y-auto fixed inset-0 z-50 items-center justify-center bg-black/20 backdrop-blur-sm"
+        class="hidden overflow-y-auto fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md transition-opacity duration-300"
       >
-        <div class="relative p-4 w-full max-w-2xl max-h-full">
-          <div class="relative bg-white rounded-lg shadow">
-            <div class="flex items-center justify-between p-4 border-b rounded-t border-gray-200">
-              <h3 class="text-xl font-semibold text-gray-900">
-                Más información - {company}
-              </h3>
+        <div class="relative p-6 w-full max-w-4xl max-h-full">
+          <div class="relative bg-white rounded-lg shadow-lg ring-1 ring-gray-200 transform transition-all duration-300">
+            <div class="flex items-center justify-between p-6 border-b rounded-t-lg border-gray-200">
+              <h3 class="text-2xl font-bold">Más información - {company}</h3>
               <button
                 type="button"
-                class="cursor-pointer text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                class="cursor-pointer text-gray-500 bg-transparent hover:bg-gray-100 hover:text-gray-900 rounded-full text-sm w-8 h-8 ms-auto inline-flex justify-center items-center transition-colors duration-200"
                 onclick={closeModal}
               >
                 <svg
@@ -116,17 +114,28 @@ const closeModal = `const el=document.getElementById('${modalId}'); el.classList
                 </svg>
               </button>
             </div>
-            <div class="p-4 space-y-4">
-              <p class="text-base leading-relaxed text-gray-500">
+            <div class="p-6 space-y-6">
+              <p class="text-base leading-relaxed text-gray-700">
                 {detailedDescription ?? description}
               </p>
               {details.map(({ label, items }) => (
                 <div>
-                  <h4 class="text-lg font-semibold text-gray-900">{label}</h4>
-                  <ul class="list-disc list-inside text-gray-700">
-                    {items.map((item) => (
-                      <li>{item}</li>
-                    ))}
+                  <h4 class="text-lg font-semibold text-pink-500">{label}</h4>
+                  <ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
+                    {items.map((item) => {
+                      const idx = item.indexOf(":");
+                      if (idx !== -1) {
+                        return (
+                          <li>
+                            <span class="font-semibold">
+                              {item.slice(0, idx)}:
+                            </span>
+                            {item.slice(idx + 1)}
+                          </li>
+                        );
+                      }
+                      return <li>{item}</li>;
+                    })}
                   </ul>
                 </div>
               ))}
